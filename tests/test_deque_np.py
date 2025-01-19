@@ -13,7 +13,7 @@ def test_deque_test():
     deque_test(d, 10)
 
 def test_deque_np():
-    d = deque_np(10, (1,), np.float32)
+    d = deque_np(10, np.float32)
     deque_test(d, 10, True)
     deque_test(d, 10)
 
@@ -44,7 +44,7 @@ def test_performance(size):
     print('')
 
     test_deque = deque(maxlen=size)
-    test_deque_np = deque_np(size, (1,), np.float32)
+    test_deque_np = deque_np(size, np.float32)
 
     performance_append(test_deque)
     performance_append(test_deque_np)

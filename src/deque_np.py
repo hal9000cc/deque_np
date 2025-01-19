@@ -2,7 +2,7 @@ import numpy as np
 
 class deque_np:
 
-    def __init__(self, maxlen: int, shape: tuple, dtype: np.dtype):
+    def __init__(self, maxlen: int, dtype: np.dtype, shape: tuple=(1,)):
 
         self.maxlen = maxlen
         self.array_size = maxlen + 1
