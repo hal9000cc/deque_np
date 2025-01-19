@@ -7,9 +7,8 @@ class deque_np:
         self.maxlen = maxlen
         self.array_size = maxlen + 1
 
-        self.deque = np.array((self.array_size, *shape), dtype=dtype)
-        self.start = 0
-        self.position = 0
+        self.deque = np.zeros((self.array_size, *shape), dtype=dtype)
+        self.clear()
 
     def append(self, element):
 
@@ -21,3 +20,18 @@ class deque_np:
 
     def __len__(self):
         return (self.position - self.start) % self.array_size
+
+    def clear(self):
+        self.start = 0
+        self.position = 0
+
+    def appendleft(self, element):
+        self.deque[self.start - 1] = element
+        self.start = (self.start - 1) % self.array_size
+
+        if self.position == self.start:
+            self.position = self.position - 1
+
+    def __getitem__(self, item):
+        return self.deque[(self.start + (item % ((self.position - self.start) % self.array_size))) % self.array_size]
+
